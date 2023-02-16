@@ -1,0 +1,92 @@
+import mudassir.dependencies.Dependencies
+import mudassir.dependencies.TestDependencies
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    namespace 'com.mudassir.pizzadeliveryapp'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.mudassir.pizzadeliveryapp"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+
+
+//    implementation project(':core')
+    implementation project(':domain')
+    implementation project(':data')
+
+    //Navigation
+    implementation Dependencies.navigation_fragment
+    implementation Dependencies.navigation_ui
+
+    //Dagger
+    implementation Dependencies.dagger
+    kapt Dependencies.dagger_compiler
+    implementation Dependencies.dagger_android
+    kapt Dependencies.dagger_android_processor
+    implementation Dependencies.dagger_android_support
+
+    //Core
+    implementation Dependencies.core_ktx
+    implementation Dependencies.appcompat
+    implementation Dependencies.material
+    implementation Dependencies.constraint_layout
+    implementation Dependencies.lifecycle_viewmodel_ktx
+    implementation Dependencies.lifecycle_runtime
+    implementation Dependencies.lifecycle_livedata_ktx
+
+    //Glide
+    implementation Dependencies.glide
+    kapt Dependencies.glide_compiler
+
+    implementation Dependencies.timber
+    implementation Dependencies.pagingCommon
+
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.mockK
+    testImplementation TestDependencies.coroutines_core
+    testImplementation TestDependencies.test_core
+    testImplementation TestDependencies.arch_core
+//    implementation 'androidx.core:core-ktx:1.7.0'
+//    implementation 'androidx.appcompat:appcompat:1.6.1'
+//    implementation 'com.google.android.material:material:1.8.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+//    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+//    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+//    testImplementation 'junit:junit:4.13.2'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}

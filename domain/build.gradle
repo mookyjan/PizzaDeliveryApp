@@ -1,0 +1,38 @@
+import mudassir.dependencies.App
+import mudassir.dependencies.Dependencies
+import mudassir.dependencies.TestDependencies
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id  'kotlin-kapt'
+}
+
+android {
+
+    compileSdkVersion App.compileSdk
+    defaultConfig {
+        minSdkVersion App.minSdk
+        targetSdkVersion App.targetSdk
+        versionCode App.versionCode
+        versionName App.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+}
+
+dependencies {
+
+    implementation project(path: ':core')
+    kapt Dependencies.dagger_compiler
+    api Dependencies.dagger_android
+    kapt Dependencies.dagger_android_processor
+
+    //pagination
+    api Dependencies.pagination
+    //Test
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.mockK
+    testImplementation TestDependencies.truth_ext
+    testImplementation TestDependencies.coroutines_core
+}

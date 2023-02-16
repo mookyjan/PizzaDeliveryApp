@@ -1,0 +1,28 @@
+import mudassir.dependencies.App
+import mudassir.dependencies.Dependencies
+
+plugins {
+    id  'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion App.compileSdk
+    defaultConfig {
+        minSdkVersion App.minSdk
+        targetSdkVersion App.targetSdk
+        versionCode App.versionCode
+        versionName App.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+
+
+dependencies {
+    api Dependencies.kotlin
+    implementation Dependencies.coroutines_core
+    api Dependencies.coroutines_android
+    //Dagger
+    api Dependencies.dagger
+}

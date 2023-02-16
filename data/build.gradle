@@ -1,0 +1,66 @@
+import mudassir.dependencies.App
+import mudassir.dependencies.Dependencies
+import mudassir.dependencies.TestDependencies
+
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+android {
+    compileSdkVersion App.compileSdk
+
+    defaultConfig {
+        minSdkVersion App.minSdk
+        targetSdkVersion App.targetSdk
+        versionCode App.versionCode
+        versionName App.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+//    buildTypes.forEach {
+//        it.buildConfigField("String", "baseUrl", baseUrl)
+//        it.buildConfigField("String","apiKey", apiKey)
+//    }
+}
+
+dependencies {
+    implementation project(path: ':core')
+    implementation project(path: ':domain')
+
+    api Dependencies.coroutines_android
+    implementation Dependencies.moshi
+    implementation Dependencies.moshi_adapter
+    api Dependencies.moshi_converter
+
+    //Dagger
+    kapt Dependencies.dagger_compiler
+    kapt Dependencies.dagger_android_processor
+
+    //Retrofit
+    implementation Dependencies.retrofit
+    implementation Dependencies.okHttp
+    api Dependencies.logging
+
+    //Room
+    api Dependencies.roomKtx
+    api Dependencies.roomRuntime
+    kapt Dependencies.roomCompiler
+
+    implementation Dependencies.lifecycle_livedata_ktx
+
+    //Test
+    testImplementation TestDependencies.junit
+    testImplementation TestDependencies.mockK
+    testImplementation TestDependencies.truth_ext
+    testImplementation TestDependencies.coroutines_core
+}
