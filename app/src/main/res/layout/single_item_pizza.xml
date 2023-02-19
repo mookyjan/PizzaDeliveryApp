@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ly_pizza"
+    android:paddingBottom="@dimen/spacing_large"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ImageView
+        android:id="@+id/iv_pizza"
+        android:layout_width="@dimen/pizzaImgSize"
+        android:layout_height="@dimen/pizzaImgSize"
+        android:layout_margin="@dimen/spacing_normal"
+        android:contentDescription="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pizza_1_firmennaya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_pizza_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_margin="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_pizza"
+        tools:text="Pizza Name" />
+
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_pizza_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+
+        android:layout_margin="@dimen/spacing_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pizza_name"
+        tools:text="Pizza Name" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_normal"
+        android:gravity="center"
+        android:padding="@dimen/spacing_small"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        android:background="@drawable/ic_add_box"
+        android:textColor="@android:color/black"
+
+        style="@style/My.Widget.Button.LetterOnly.Rounded"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pizza_name"
+         />
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/guideline_divider"
+
+        app:layout_constraintGuide_begin="110dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

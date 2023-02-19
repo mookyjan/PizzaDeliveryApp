@@ -32,6 +32,9 @@ object Versions {
     //LiveData
     const val liveData = "2.5.1"
 
+    //Gson
+    const val gson = "2.7"
+
     // DI
     const val dagger = "2.44.2"
     const val javax = "10.0-b28"

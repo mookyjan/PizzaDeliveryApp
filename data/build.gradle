@@ -27,10 +27,10 @@ android {
         }
     }
 
-//    buildTypes.forEach {
-//        it.buildConfigField("String", "baseUrl", baseUrl)
+    buildTypes.forEach {
+        it.buildConfigField("String", "baseUrl", baseUrl)
 //        it.buildConfigField("String","apiKey", apiKey)
-//    }
+    }
 }
 
 dependencies {
@@ -48,6 +48,7 @@ dependencies {
 
     //Retrofit
     implementation Dependencies.retrofit
+    implementation Dependencies.retrofitMock
     implementation Dependencies.okHttp
     api Dependencies.logging
 

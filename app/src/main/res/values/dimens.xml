@@ -2,4 +2,27 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+
+    <dimen name="pizzaImgSize">150dp</dimen>
+    <dimen name="pizzaPlateSize">155dp</dimen>
+    <dimen name="pizzaPriceTextSize">20sp</dimen>
+
+    <dimen name="btn_add_to_cart_size">36dp</dimen>
+    <dimen name="btn_pizza_size">38dp</dimen>
+    <dimen name="tv_order_manually_text_size">20sp</dimen>
+    <dimen name="pizzaRadiusInView">300dp</dimen>
+    <dimen name="pizzaRadiusOutView">500dp</dimen>
+
+
+    <dimen name="spacing_none">0dp</dimen>
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    <dimen name="button_space">32dp</dimen>
+
+    <dimen name="text_size">16sp</dimen>
+
+    <dimen name="grid_spacing">12dp</dimen>
 </resources>

@@ -23,6 +23,7 @@ dependencies {
     api Dependencies.kotlin
     implementation Dependencies.coroutines_core
     api Dependencies.coroutines_android
+    implementation Dependencies.gson
     //Dagger
     api Dependencies.dagger
 }
