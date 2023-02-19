@@ -1,0 +1,53 @@
+{
+  "menuItems": [
+    {
+      "item_id": "1",
+      "name": "Chef's pizza",
+      "description": "Tomato sauce, mozzarella cheese, and fresh basil",
+      "image": "pizza_1_firmennaya",
+      "price": 9.99
+    },
+    {
+      "item_id": "2",
+      "name": "Bavarian",
+      "description": "Tomato sauce, mozzarella cheese, and pepperoni",
+      "image": "pizza_2_bavarska",
+      "price": 11.99
+    },
+    {
+      "item_id": 3,
+      "name": "Margherita",
+      "description": "Tomato sauce, mozzarella cheese, ham, and pineapple.",
+      "image": "pizza_3_margarita",
+      "price": 14.99
+    },
+    {
+      "item_id": 4,
+      "name": "Meat pizza",
+      "description": "Tomato sauce, mozzarella cheese, ham, and pineapple.",
+      "image": "pizza_4_myasna",
+      "price": 14.99
+    },
+    {
+      "item_id": "5",
+      "name": "Village pizza",
+      "description": "Tomato sauce, mozzarella cheese, and pepperoni",
+      "image": "pizza_5_po_selyanski",
+      "price": 11.99
+    },
+    {
+      "item_id": 6,
+      "name": "Salami pizza",
+      "description": "Tomato sauce, mozzarella cheese, ham, and pineapple.",
+      "image": "pizza_6_salyzmi",
+      "price": 14.99
+    },
+    {
+      "item_id": 7,
+      "name": "Vegetarian",
+      "description": "Tomato sauce, mozzarella cheese, ham, and pineapple.",
+      "image": "pizza_7_vegetarianska",
+      "price": 14.99
+    }
+  ]
+}

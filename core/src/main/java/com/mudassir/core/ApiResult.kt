@@ -1,4 +1,4 @@
-package com.mudassir.data.util
+package com.mudassir.core
 
 sealed interface ApiResult<out T> {
 

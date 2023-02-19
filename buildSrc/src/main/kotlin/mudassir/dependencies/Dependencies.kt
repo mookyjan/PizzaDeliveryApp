@@ -27,10 +27,14 @@ object Dependencies {
 
     // Networking
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitMock = "com.squareup.retrofit2:retrofit-mock:${Versions.retrofit}"
     const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
     const val logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
-    const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
+    const val gson_converter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val moshi_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit}"
+
+    const val gson =  "com.google.code.gson:gson:${Versions.gson}"
+
 
     // Coroutines
     const val coroutines_core =

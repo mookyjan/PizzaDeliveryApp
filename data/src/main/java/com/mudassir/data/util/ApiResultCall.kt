@@ -1,5 +1,6 @@
 package com.mudassir.data.util
 
+import com.mudassir.core.ApiResult
 import okio.Timeout
 import retrofit2.Call
 import retrofit2.Callback

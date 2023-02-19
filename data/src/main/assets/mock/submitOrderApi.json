@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "message": "Found the order",
+  "data": {
+    "order": {
+      "id": 8,
+      "type": "margarita",
+      "size": "large",
+      "quantity": 6,
+      "customer_id": 1,
+      "delivery_status": "new",
+      "createdAt": "2023-02-07T20:34:44.523Z",
+      "updatedAt": "2023-02-07T20:34:44.523Z"
+    },
+    "customer": {
+      "first_name": "Mark ",
+      "last_name": "Chee",
+      "address": "CBD Area, Road 8, Singapore, Postal code 234233"
+    }
+  }
+}
