@@ -7,6 +7,7 @@ import com.mudassir.domain.model.*
 import com.mudassir.domain.usecase.MenuListUseCase
 import com.mudassir.pizzadeliveryapp.R
 import javax.inject.Inject
+import kotlin.math.log
 
 class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUseCase) :
     ViewModel() {
@@ -18,6 +19,14 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
     }
     val text: LiveData<String> = _text
 
+    var pizzaList : MutableLiveData<List<Pizza>> = MutableLiveData(listOf())
+
+    // Get the current list of pizzas
+    val currentList = pizzaList.value?.toMutableList() ?: mutableListOf()
+
+
+
+    var currentPizza : Pizza = Pizza()
 
     var _currentPizzaInFocus = MutableLiveData<Pizza>()
     val currentPizzaInFocus: LiveData<Pizza> = _currentPizzaInFocus
@@ -41,6 +50,18 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
     fun getCurrentCount() {
         _pizzasInCart += 1
         pizzasInCartLiveData.value = _pizzasInCart
+
+//        currentPizza = currentPizzaInFocus.value?: Pizza()
+        Log.d(TAG, "getCurrentCount: $currentPizza     $currentList  ${pizzaList.value}")
+        // Add the new pizza to the list
+        currentList.add(currentPizza)
+        pizzaList.value = currentList.toList()
+        Log.d(TAG, "getCurrentCount 2: $currentPizza     $currentList  ${pizzaList.value}")
+//        pizzaList.value = pizzaList.value?.plus(currentPizza) ?: listOf(currentPizza)
+    }
+
+    fun updatePizza(pizza: Pizza) {
+        currentPizza = pizza
     }
 
 
@@ -75,12 +96,6 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
         PizzaToppingAndPrice(PizzaToppings.CHILI, 2)
     )
 
-    val pizzaSizeList = listOf(
-        PizzaSizeAndPrice(PizzaSize.S, 3),
-        PizzaSizeAndPrice(PizzaSize.M, 5),
-        PizzaSizeAndPrice(PizzaSize.L, 7)
-    )
-
 
     fun updatePrice(price: Int, isIncrement: Boolean) {
 
@@ -102,6 +117,18 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
 
     fun updatePizzaSize(size: PizzaSizeAndPrice) {
         _sizeSelected.value = size
+    }
+
+    fun updateCartItem(cartItem: Pizza) {
+        val items = pizzaList.value ?: emptyList()
+        val index = items.indexOfFirst { it.name == cartItem.name }
+        if (index == -1) {
+            pizzaList.value = items + cartItem
+        } else {
+            val newList = items.toMutableList()
+            newList[index] = cartItem
+            pizzaList.value = newList
+        }
     }
 
 }

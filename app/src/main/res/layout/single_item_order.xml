@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/spacing_small"
+    android:id="@+id/ly_order_item"
+    android:background="?attr/selectableItemBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv_pizza_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_divider"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Pizza Name" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_pizza"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@color/black"
+        android:padding="@dimen/spacing_small"
+        android:scaleType="fitCenter"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/pizza_1_firmennaya"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_price"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_small"
+        android:textSize="@dimen/text_size"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/guideline_divider"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pizza_name"
+        tools:text="Price"
+
+        />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/guideline_divider"
+        app:layout_constraintTop_toBottomOf="@+id/tv_price">
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/iv_minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:src="@drawable/ic_minus" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_small"
+            android:textSize="@dimen/text_size"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline_divider"
+            app:layout_constraintTop_toBottomOf="@+id/tv_place_category"
+            tools:text="Quantity" />
+
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/iv_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:src="@drawable/ic_add" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/guideline_divider"
+
+        app:layout_constraintGuide_begin="110dp"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

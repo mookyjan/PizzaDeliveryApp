@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.mudassir.core.hide
+import com.mudassir.core.show
 import com.mudassir.domain.model.Pizza
 import com.mudassir.domain.model.PizzaSize
 import com.mudassir.domain.model.PizzaSizeAndPrice
@@ -25,6 +27,7 @@ class PizzaDetailFragment : Fragment() {
     val TAG = PizzaDetailFragment::class.java.name
 
     lateinit var mBinding: FragmentPizzaDetailBinding
+    private var initialPosIvHotIndicator = 0f
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -57,12 +60,15 @@ class PizzaDetailFragment : Fragment() {
 
         mBinding.toolbarBackBtn.setOnClickListener {
             Log.d(TAG, "onViewCreated: back pressed")
+
         }
+        
     }
 
 
     private fun observeEvents() {
         viewModel.currentPizzaInFocus.observe(viewLifecycleOwner, Observer {
+            viewModel.updatePizza(it)
             updateUI(it)
         })
 
@@ -75,6 +81,10 @@ class PizzaDetailFragment : Fragment() {
         viewModel.currentPizzaInFocus.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "observeEvents: ${it.price} ${it.resultPrice} ")
             mBinding.tvPrice.text = "$ ${it.resultPrice}"
+        })
+        
+        viewModel.pizzaList.observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "observeEvents: list  :  $it")
         })
     }
 
@@ -92,37 +102,6 @@ class PizzaDetailFragment : Fragment() {
                 mBinding.tvPrice.text = ("$${pizza.resultPrice}")
             }
         }
-    }
-
-    private fun calculatePrice(pizzaSize: PizzaSize): Float {
-        return when (pizzaSize) {
-            PizzaSize.S -> 10.0f
-            PizzaSize.M -> 12.0f
-            PizzaSize.L -> 14.0f
-            else -> throw java.lang.IllegalArgumentException("Invalid size: $pizzaSize")
-        }
-    }
-
-    private fun setupUi() {
-        mBinding.btnSizeS.setOnClickListener {
-//            viewModel.updatePizzaSize(PizzaSize.S)
-            it.isSelected = true
-            mBinding.btnSizeM.isSelected = false
-            mBinding.btnSizeL.isSelected = false
-        }
-        mBinding.btnSizeM.setOnClickListener {
-//            viewModel.updatePizzaSize(PizzaSize.M)
-            it.isSelected = true
-            mBinding.btnSizeS.isSelected = false
-            mBinding.btnSizeL.isSelected = false
-        }
-        mBinding.btnSizeL.setOnClickListener {
-//            viewModel.updatePizzaSize(PizzaSize.L)
-            it.isSelected = true
-            mBinding.btnSizeM.isSelected = false
-            mBinding.btnSizeS.isSelected = false
-        }
-
     }
 
     private fun setPizzaSizeButtons() {
@@ -151,29 +130,7 @@ class PizzaDetailFragment : Fragment() {
         }
     }
 
-
-    private fun onToppingButtonClick(button: Button, index: Int, currentPizzaInFocus: Pizza?) {
-        with(viewModel.pizzaToppingsList[index]) {
-            if (button.isSelected) {
-                button.isSelected = false
-                viewModel.currentPizzaInFocus?.value?.toppings?.remove(this)
-                decreaseCurrentPizzaPrice(this.price)
-//                if (index == 4) {
-//                    mBinding.ivHotIndicator.animate().translationX(initialPosIvHotIndicator).setDuration(500)
-//                }
-            } else {
-                button.isSelected = true
-                viewModel.currentPizzaInFocus?.value?.toppings?.add(this)
-                increaseCurrentPizzaPrice(this.price)
-                if (index == 4) {
-//                    ivHotIndicator.animate().translationX(0f).setDuration(500)
-                }
-            }
-        }
-    }
-
     private fun buttonClick() {
-
         // Set up click listeners for all topping buttons
         val toppingButtons = listOf(
             mBinding.btnAddMushrooms, mBinding.btnAddTomato,
@@ -188,14 +145,25 @@ class PizzaDetailFragment : Fragment() {
                         viewModel._currentPizzaInFocus.value?.toppings?.remove(this)
                         decreaseCurrentPizzaPrice(this.price)
                         if (index == 4) {
-//                            ivHotIndicator.animate().translationX(initialPosIvHotIndicator).setDuration(500)
+                            mBinding.ivHotIndicator.show()
+                            mBinding.ivHotIndicator.animate().translationX(initialPosIvHotIndicator).setDuration(500)
+                        } else {
+                            //TODO need to update
+                            initialPosIvHotIndicator = 0f
+                            mBinding.ivHotIndicator.animate().translationX(initialPosIvHotIndicator).setDuration(500)
+                            mBinding.ivHotIndicator.hide()
                         }
                     } else {
                         it.isSelected = true
                         viewModel._currentPizzaInFocus.value?.toppings?.add(this)
                         increaseCurrentPizzaPrice(this.price)
                         if (index == 4) {
-//                            ivHotIndicator.animate().translationX(0f).setDuration(500)
+                            mBinding.ivHotIndicator.show()
+                            mBinding.ivHotIndicator.animate().translationX(0f).setDuration(500)
+                        }else {
+                            initialPosIvHotIndicator = 0f
+                            mBinding.ivHotIndicator.animate().translationX(initialPosIvHotIndicator).setDuration(500)
+                            mBinding.ivHotIndicator.hide()
                         }
                     }
                 }

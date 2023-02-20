@@ -32,16 +32,19 @@
         android:contentDescription="@null"
         />
 
-<!--    <View-->
-<!--        android:id="@+id/pizzaViewsBounds"-->
-<!--        android:layout_width="@dimen/pizzaPlateSize"-->
-<!--        android:layout_height="@dimen/pizzaPlateSize"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:background="@drawable/pizza_plate"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
+    <ImageView
+        android:id="@+id/ivHotIndicator"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="6dp"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_fire_24"
+        android:translationX="100dp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_pizza"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_pizza"
+        app:layout_constraintTop_toTopOf="@id/iv_pizza"
+        app:layout_constraintVertical_bias="0.2" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="@dimen/pizzaPlateSize"

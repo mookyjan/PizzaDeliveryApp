@@ -16,16 +16,16 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_order"
+        android:name="com.mudassir.pizzadeliveryapp.ui.order.OrderFragment"
+        android:label="@string/title_order"
+        tools:layout="@layout/fragment_order" />
+
+    <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.mudassir.pizzadeliveryapp.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
-
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.mudassir.pizzadeliveryapp.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/pizzaDetailFragment"
         android:name="com.mudassir.pizzadeliveryapp.ui.home.PizzaDetailFragment"

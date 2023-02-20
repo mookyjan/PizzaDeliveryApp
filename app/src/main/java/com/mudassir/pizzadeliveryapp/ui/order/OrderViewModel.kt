@@ -1,13 +1,15 @@
-package com.mudassir.pizzadeliveryapp.ui.notifications
+package com.mudassir.pizzadeliveryapp.ui.order
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class OrderViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "This is notifications Fragment"
     }
     val text: LiveData<String> = _text
 }
+
+
