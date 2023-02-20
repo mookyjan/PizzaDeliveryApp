@@ -40,22 +40,7 @@ class OrderListAdapter constructor(val viewModel: HomeViewModel) : ListAdapter<P
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
-        val cartItem = getItem(position)
         holder.bind(getItem(position))
-
-        holder.binding.ivAdd.setOnClickListener {
-          cartItem.quantity++
-            viewModel.updateCartItem(cartItem)
-            notifyItemChanged(position) // Notify adapter of data change
-        }
-
-        holder.binding.ivMinus.setOnClickListener {
-            if (cartItem.quantity > 0) {
-                cartItem.quantity--
-                viewModel.updateCartItem(cartItem)
-                notifyItemChanged(position) // Notify adapter of data change
-            }
-        }
     }
 
     inner class ItemViewHolder( val binding: SingleItemOrderBinding) :
@@ -70,23 +55,25 @@ class OrderListAdapter constructor(val viewModel: HomeViewModel) : ListAdapter<P
                     .error(R.drawable.pizza_1_firmennaya).into(imageView)
             }
 
-            Log.d("TAGAdapter", "bind: ${item.name}  ${item.quantity}")
+            Log.d("TAGAdapter", "bind: ${item.resultPrice}  ${item.quantity}")
             binding.tvPizzaName.text = item.name
-            binding.tvPrice.text = "$${item.price}"
+            binding.tvPrice.text = "$${item.resultPrice}"
             binding.tvQuantity.text = "${item.quantity}"
-//            binding.ivAdd.setOnClickListener {
-//                var count = item.quantity +1
-////               val updatedItem = item.copy(
-////                    quantity = count++
-////                )
-//
+            binding.ivAdd.setOnClickListener {
+                item.quantity++
+                item.resultPrice = item.quantity * item.price
+                viewModel.updateCartItem(item)
+                notifyItemChanged(position) // Notify adapter of data change
 //                callbacks?.onItemIncrement(count)
-//            }
-//            binding.ivMinus.setOnClickListener {
-//                val count = item.quantity - 1
-//                item.copy(quantity = count)
+            }
+            binding.ivMinus.setOnClickListener {
+                if (item.quantity > 0) {
+                    item.quantity--
+                    viewModel.updateCartItem(item)
+                    notifyItemChanged(position) // Notify adapter of data change
+                }
 //                callbacks?.onItemDecrement(item)
-//            }
+            }
 //            binding.tvPlaceDescription.text = item.description
 //            binding.lyPizza.setOnClickListener {
 //                callbacks?.onPizzaItemClick(it, item)

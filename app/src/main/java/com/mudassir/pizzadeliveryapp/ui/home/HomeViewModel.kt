@@ -14,17 +14,10 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
 
     val TAG = HomeViewModel::class.java.name
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
-
     var pizzaList : MutableLiveData<List<Pizza>> = MutableLiveData(listOf())
 
     // Get the current list of pizzas
     val currentList = pizzaList.value?.toMutableList() ?: mutableListOf()
-
-
 
     var currentPizza : Pizza = Pizza()
 
@@ -34,7 +27,7 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
     var _sizeSelected = MutableLiveData<PizzaSizeAndPrice>()
     val sizeSelected: LiveData<PizzaSizeAndPrice> = _sizeSelected
 
-
+    var orderPrice : MutableLiveData<Int> = MutableLiveData(0)
     var totalPrice: Int = 0
     val menuLiveDataEvent = MutableLiveData<Unit>()
 
@@ -129,6 +122,15 @@ class HomeViewModel @Inject constructor(private val menuListUseCase: MenuListUse
             newList[index] = cartItem
             pizzaList.value = newList
         }
+    }
+
+    fun calculateTotalPrice(pizzas: List<Pizza>): Int {
+       var totalPrice = 0
+        for (pizza in pizzas) {
+            totalPrice = totalPrice?.plus(pizza.resultPrice?:0)?:0
+        }
+        orderPrice.postValue(totalPrice)
+        return totalPrice
     }
 
 }

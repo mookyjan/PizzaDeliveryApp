@@ -38,13 +38,17 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_order"
         app:layout_constraintTop_toBottomOf="@+id/tv_order" />
 
-
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_order"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/btn_complete_order"
         android:layout_margin="@dimen/spacing_large"
+        android:textAllCaps="false"
+        android:textSize="@dimen/spacing_large"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/purple_200"
+        style="@style/Widget.Material3.Button.TextButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

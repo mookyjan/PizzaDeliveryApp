@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -31,6 +32,8 @@ class OrderFragment : Fragment(), OrderListAdapter.CartItemListener {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private val viewModel: HomeViewModel by activityViewModels { viewModelFactory }
+
+    private val orderViewModel : OrderViewModel by viewModels { viewModelFactory }
 
     lateinit var mAdapter: OrderListAdapter
 
@@ -61,12 +64,20 @@ class OrderFragment : Fragment(), OrderListAdapter.CartItemListener {
         viewModel.pizzaList.observe(viewLifecycleOwner, Observer {
             Log.d(TAG, "observeEvents: ob $it")
             mAdapter.submitList(it)
+           val total = viewModel.calculateTotalPrice(it)
+            Log.d(TAG, "observeEvents: $total")
         })
        
         mBinding.btnOrder.setOnClickListener { 
            val list = viewModel.pizzaList.value
-            Log.d(TAG, "observeEvents: $list")
+
+           val arr = orderViewModel.orderRequestData(list,viewModel.totalPrice.toFloat())
+            Log.d(TAG, "observeEvents: $arr")
         }
+
+        viewModel.orderPrice.observe(viewLifecycleOwner, Observer {
+            mBinding.tvOrder.text = String.format(getString(R.string.txt_total_price), it)
+        })
 
     }
 
