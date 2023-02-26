@@ -29,12 +29,12 @@ jobs:
       run: ./gradlew developProdDebugCoverage debugCoverage
 
     - name: Upload Report
-      run: 'actions/upload-artifact@v2'
+      uses: actions/upload-artifact@v2
       with:
-      paths: |
-        ${{ github.workspace }}/app/build/reports/jacoco/developProdDebugCoverage/developProdDebugCoverage.xml,
-        ${{ github.workspace }}/domain/build/reports/jacoco/debugCoverage/debugCoverage.xml,
-        ${{ github.workspace }}/data/build/reports/jacoco/debugCoverage/debugCoverage.xml
+        paths: |
+          ${{ github.workspace }}/app/build/reports/jacoco/developProdDebugCoverage/developProdDebugCoverage.xml,
+          ${{ github.workspace }}/domain/build/reports/jacoco/debugCoverage/debugCoverage.xml,
+          ${{ github.workspace }}/data/build/reports/jacoco/debugCoverage/debugCoverage.xml
 
     - name: Jacoco Report to PR
       id: jacoco
