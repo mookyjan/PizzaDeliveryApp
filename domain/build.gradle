@@ -7,6 +7,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id  'kotlin-kapt'
 }
+apply from: '../jacoco/modules.gradle'
 
 android {
 

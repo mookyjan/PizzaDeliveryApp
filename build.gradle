@@ -6,3 +6,9 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.21' apply false
     id 'androidx.navigation.safeargs' version '2.4.2' apply false
 }
+
+apply from: 'jacoco/project.gradle'
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
