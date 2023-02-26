@@ -21,7 +21,6 @@ import com.mudassir.core.show
 import com.mudassir.domain.model.Pizza
 import com.mudassir.pizzadeliveryapp.R
 import com.mudassir.pizzadeliveryapp.databinding.FragmentHomeBinding
-import com.mudassir.pizzadeliveryapp.databinding.PizzaViewsBinding
 import com.mudassir.pizzadeliveryapp.ui.adapter.MenuListAdapter
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
@@ -35,9 +34,6 @@ class HomeFragment : Fragment(), MenuListAdapter.Callbacks {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val mBinding get() = _binding!!
-
-    lateinit var mBindingPizzaView: PizzaViewsBinding
-
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
