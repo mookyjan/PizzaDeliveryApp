@@ -26,13 +26,15 @@ jobs:
       run: ./gradlew build
 
     - name:  Run coverage
-      run: ./gradlew testCoverage
+      run: ./gradlew developProdDebugCoverage debugCoverage
 
     - name: Upload Report
       run: 'actions/upload-artifact@v2'
       with:
-        name: report.xml
-        path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
+      paths: |
+        ${{ github.workspace }}/app/build/reports/jacoco/developProdDebugCoverage/developProdDebugCoverage.xml,
+        ${{ github.workspace }}/domain/build/reports/jacoco/debugCoverage/debugCoverage.xml,
+        ${{ github.workspace }}/data/build/reports/jacoco/debugCoverage/debugCoverage.xml
 
     - name: Jacoco Report to PR
       id: jacoco
