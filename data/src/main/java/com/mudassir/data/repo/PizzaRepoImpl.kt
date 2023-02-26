@@ -14,7 +14,6 @@ class PizzaRepoImpl (
     override suspend fun getMenuList(): ApiResult<List<Pizza>> {
         return try {
             val response = remoteDataSource.getMenuList()
-            Log.d("PizzaRepoImpl", "getMenuList: $response")
             val result = when (response) {
                 is ApiResult.Success -> {
                     ApiResult.Success(response.data?.let { mapper.invoke(it) })
