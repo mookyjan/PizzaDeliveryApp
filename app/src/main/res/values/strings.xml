@@ -17,4 +17,6 @@
     <string name="txt_your_order">Your Order</string>
     <string name="btn_complete_order">Complete Order</string>
     <string name="txt_total_price">Total Price : %1$d</string>
+
+    <string name="txt_coming_soon">Coming Soon</string>
 </resources>

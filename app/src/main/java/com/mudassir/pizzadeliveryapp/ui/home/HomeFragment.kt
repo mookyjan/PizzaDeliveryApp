@@ -79,18 +79,18 @@ class HomeFragment : Fragment(), MenuListAdapter.Callbacks {
         // Set the spacing between items in the grid
         val spacing = resources.getDimensionPixelSize(R.dimen.grid_spacing)
 
-// Create the item decoration for vertical dividers
+        // Create the item decoration for vertical dividers
         val verticalDividerItemDecoration =
             MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
         verticalDividerItemDecoration.dividerColor = resources.getColor(R.color.black)
 
-// Create the item decoration for horizontal dividers
+        // Create the item decoration for horizontal dividers
         val horizontalDividerItemDecoration =
             MaterialDividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL)
         horizontalDividerItemDecoration.dividerColor = resources.getColor(R.color.black)
 
 
-// Set the margin for the items in the grid to create the divider effect
+        // Set the margin for the items in the grid to create the divider effect
         val itemDecoration = object : RecyclerView.ItemDecoration() {
             override fun getItemOffsets(
                 outRect: Rect,
