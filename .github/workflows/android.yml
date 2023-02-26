@@ -45,7 +45,7 @@ jobs:
         title: Code Coverage
         debug-mode: false
 
-          - name: Get the Coverage info
+    - name: Get the Coverage info
             run: |
               echo "Total coverage ${{ steps.jacoco.outputs.coverage-overall }}"
               echo "Changed Files coverage ${{ steps.jacoco.outputs.coverage-changed-files }}"
