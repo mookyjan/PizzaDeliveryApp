@@ -28,19 +28,14 @@ jobs:
     - name:  Run coverage
       run: ./gradlew developProdDebugCoverage debugCoverage
 
-    - name: Upload Report
-      uses: actions/upload-artifact@v2
+    - name: Jacoco Report to PR
+      id: jacoco
+      uses: madrapps/jacoco-report@v1.3
       with:
         paths: |
           ${{ github.workspace }}/app/build/reports/jacoco/developProdDebugCoverage/developProdDebugCoverage.xml,
           ${{ github.workspace }}/domain/build/reports/jacoco/debugCoverage/debugCoverage.xml,
           ${{ github.workspace }}/data/build/reports/jacoco/debugCoverage/debugCoverage.xml
-
-    - name: Jacoco Report to PR
-      id: jacoco
-      uses: madrapps/jacoco-report@v1.2
-      with:
-        path: ${{ github.workspace }}/build/reports/jacoco/testCoverage/testCoverage.xml
         token: ${{ secrets.GITHUB_TOKEN }}
         min-coverage-overall: 40
         min-coverage-changed-files: 60
